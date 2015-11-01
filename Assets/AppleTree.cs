@@ -18,8 +18,15 @@ public class AppleTree : MonoBehaviour {
     // Rate at which Apples will be instantiated
     public float secondsBetweenAppleDrops = 1f;
 
+    public Sprite appareance1;
+
+    public Sprite appareance2;
+
+    public Sprite appareance3;
+
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = appareance1;
         // Dropping apples every second
         InvokeRepeating("DropApple", 2f, secondsBetweenAppleDrops);
     }
@@ -55,5 +62,17 @@ public class AppleTree : MonoBehaviour {
     {
         GameObject apple = Instantiate(applePrefab) as GameObject;
         apple.transform.position = transform.position;
+    }
+
+    public void lostHeal()
+    {
+        Sprite current = GetComponent<SpriteRenderer>().sprite;
+        if(current == appareance1)
+        {
+            GetComponent<SpriteRenderer>().sprite = appareance2;
+        } else if (current == appareance2)
+        {
+            GetComponent<SpriteRenderer>().sprite = appareance3;
+        }
     }
 }

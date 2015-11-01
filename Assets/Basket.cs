@@ -54,4 +54,8 @@ public class Basket : MonoBehaviour
         }
     }
 
+    public void saveScore()
+    {
+        PlayerPrefs.SetInt("ApplePickerScore", int.Parse(scoreGT.text));
+    }
 }
